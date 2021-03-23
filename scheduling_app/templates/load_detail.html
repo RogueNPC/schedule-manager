@@ -2,34 +2,36 @@
 
 {% block content %}
 
-<h1>{{ load.load_number }}</h1>
+<h1>Load #{{ load.load_number }}</h1>
+
+<h1>Entered by - {{ load.entered_by.username }}</h1>
 
 <form action="/delete/{{ load.id }}" method="POST">
     <input type="submit" value="Delete entry">
 </form>
 
 <p>
-    <strong>Date and Time</strong>: {{ console.date_and_time }}
+    <strong>Date</strong>: {{ load.date.strftime('%B %d, %Y') }}
 </p>
 
 <p>
-    <strong>Shipping Order Number</strong>: {{ console.shipping_order_number }}
+    <strong>Shipping Order Number</strong>: {{ load.shipping_order_number }}
 </p>
 
 <p>
-    <strong>Customer</strong>: {{ console.customer }}
+    <strong>Customer</strong>: {{ load.customer }}
 </p>
 
 <p>
-    <strong>Trucker</strong>: {{ console.trucker }}
+    <strong>Trucker</strong>: {{ load.trucker }}
 </p>
 
 <p>
-    <strong>Pallet Amount</strong>: {{ console.pallet_amount }}
+    <strong>Pallet Amount</strong>: {{ load.pallet_amount }}
 </p>
 
 <p>
-    <strong>Pickup</strong>: {{ console.pickup }}
+    <strong>Pickup</strong>: {{ load.pickup }}
 </p>
 
 <h2>Edit Load</h2>
@@ -47,10 +49,10 @@
             {% endfor %}
         </ul>
 
-        {{ form.date_and_time.label }}
-        {{ form.date_and_time }}
+        {{ form.date.label }}
+        {{ form.date(placeholder="YYYY-mm-dd") }}
         <ul>
-            {% for error in form.date_and_time.errors %}
+            {% for error in form.date.errors %}
               <li class="error">{{ error }}</li>
             {% endfor %}
         </ul>

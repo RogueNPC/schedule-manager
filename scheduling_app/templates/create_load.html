@@ -16,10 +16,10 @@
             {% endfor %}
         </ul>
 
-        {{ form.date_and_time.label }}
-        {{ form.date_and_time }}
+        {{ form.date.label }}
+        {{ form.date(placeholder="YYYY-mm-dd") }}
         <ul>
-            {% for error in form.date_and_time.errors %}
+            {% for error in form.date.errors %}
               <li class="error">{{ error }}</li>
             {% endfor %}
         </ul>

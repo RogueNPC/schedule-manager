@@ -1,7 +1,6 @@
 """Import packages and modules."""
 from flask import Blueprint, request, render_template, redirect, url_for, flash
 from flask_login import login_user, logout_user, login_required, current_user
-from datetime import date, datetime
 from scheduling_app.models import Load, User
 from scheduling_app.main.forms import LoadForm
 from scheduling_app import bcrypt
@@ -35,12 +34,13 @@ def new_load():
     if form.validate_on_submit():
         new_load = Load(
             load_number=form.load_number.data,
-            date_and_time=form.date_and_time.data,
+            date=form.date.data,
             shipping_order_number=form.shipping_order_number.data,
             customer=form.customer.data,
             trucker=form.trucker.data,
             pallet_amount=form.pallet_amount.data,
-            pickup=form.pickup.data
+            pickup=form.pickup.data,
+            entered_by=current_user
         )
         db.session.add(new_load)
         db.session.commit()
@@ -49,7 +49,7 @@ def new_load():
         return redirect(url_for('main.load_detail', load_id=new_load.id))
     return render_template('create_load.html', form=form)
     # load_number = IntegerField('Load Number', validators=[DataRequired()])
-    # date_and_time = DateTimeField('Date and Time Scheduled', validators=[DataRequired()])
+    # date = DateField('Date Scheduled', validators=[DataRequired()])
     # shipping_order_number = IntegerField('Shipping Order Number', validators=[DataRequired()])
     # customer = StringField('Customer', validators=[DataRequired(), Length(min=3, max=80)])
     # trucker = StringField('Trucker', validators=[DataRequired(), Length(min=3, max=80)])

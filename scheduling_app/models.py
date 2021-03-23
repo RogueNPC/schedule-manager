@@ -7,7 +7,7 @@ class Load(db.Model):
     """Load model."""
     id = db.Column(db.Integer, primary_key=True)
     load_number = db.Column(db.Integer, nullable=False)
-    date_and_time = db.Column(db.DateTime, nullable=False)
+    date = db.Column(db.Date, nullable=False)
     shipping_order_number = db.Column(db.Integer, nullable=False)
     customer = db.Column(db.String(80), nullable=False)
     trucker = db.Column(db.String(80), nullable=False)
