@@ -10,7 +10,7 @@
 {% for load in all_loads %}
 <div class="load">
     <a href="/load/{{ load.id }}">#{{ load.load_number }}</a>
-    <p><strong>Date</strong>: {{ load.date }}</p>
+    <p><strong>Date</strong>: {{ load.date.strftime('%B %d, %Y') }}</p>
     <p><strong>Number of Pallets</strong>: {{ load.pallet_amount }}</p>
 </div>
 {% endfor %}
