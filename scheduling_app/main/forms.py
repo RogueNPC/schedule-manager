@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, IntegerField, DateTimeField, SubmitField
+from wtforms import StringField, IntegerField, BooleanField, DateTimeField, SubmitField
 from wtforms.ext.sqlalchemy.fields import QuerySelectField, QuerySelectMultipleField
 from wtforms.validators import DataRequired, Length, ValidationError
 from tracker_app.models import Load, User
@@ -12,4 +12,5 @@ class LoadForm(FlaskForm):
     customer = StringField('Customer', validators=[DataRequired(), Length(min=3, max=80)])
     trucker = StringField('Trucker', validators=[DataRequired(), Length(min=3, max=80)])
     pallet_amount = IntegerField('Pallet Amount', validators=[DataRequired()])
+    pickup = BooleanField('Pickup?')
     submit = SubmitField('Submit')

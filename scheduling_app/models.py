@@ -12,6 +12,7 @@ class Load(db.Model):
     customer = db.Column(db.String(80), nullable=False)
     trucker = db.Column(db.String(80), nullable=False)
     pallet_amount = db.Column(db.Integer, nullable=False)
+    pickup = db.Column(db.Boolean)
     entered_by_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     entered_by = db.relationship('User')
 
