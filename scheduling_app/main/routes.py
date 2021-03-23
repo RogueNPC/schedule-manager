@@ -19,6 +19,12 @@ main = Blueprint("main", __name__)
 def homepage():
     return render_template('home.html')
 
+@main.route('/schedule')
+@login_required
+def schedule():
+    all_loads = Load.query.all()
+    return render_template('schedule.html', all_loads=all_loads)
+
 @main.route('/new_load', methods=['GET', 'POST'])
 @login_required
 def new_load():
