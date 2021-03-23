@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>{{ load.load_number }}</h1>
+
+<form action="/delete/{{ load.id }}" method="POST">
+    <input type="submit" value="Delete entry">
+</form>
+
+<p>
+    <strong>Date and Time</strong>: {{ console.date_and_time }}
+</p>
+
+<p>
+    <strong>Shipping Order Number</strong>: {{ console.shipping_order_number }}
+</p>
+
+<p>
+    <strong>Customer</strong>: {{ console.customer }}
+</p>
+
+<p>
+    <strong>Trucker</strong>: {{ console.trucker }}
+</p>
+
+<p>
+    <strong>Pallet Amount</strong>: {{ console.pallet_amount }}
+</p>
+
+<p>
+    <strong>Pickup</strong>: {{ console.pickup }}
+</p>
+
+<h2>Edit Load</h2>
+
+<form method="POST" action="{{ url_for('main.load_detail', load_id=load.id) }}">
+    {{ form.csrf_token }}
+    <fieldset>
+        <legend>Please enter the load information:</legend>
+
+        {{ form.load_number.label }}
+        {{ form.load_number }}
+        <ul>
+            {% for error in form.load_number.errors %}
+              <li class="error">{{ error }}</li>
+            {% endfor %}
+        </ul>
+
+        {{ form.date_and_time.label }}
+        {{ form.date_and_time }}
+        <ul>
+            {% for error in form.date_and_time.errors %}
+              <li class="error">{{ error }}</li>
+            {% endfor %}
+        </ul>
+
+        {{ form.shipping_order_number.label }}
+        {{ form.shipping_order_number }}
+        <ul>
+            {% for error in form.shipping_order_number.errors %}
+                <li class="error">{{ error }}</li>
+            {% endfor %}
+        </ul>
+
+        {{ form.customer.label }}
+        {{ form.customer }}
+        <ul>
+            {% for error in form.customer.errors %}
+              <li class="error">{{ error }}</li>
+            {% endfor %}
+        </ul>
+
+        {{ form.trucker.label }}
+        {{ form.trucker }}
+        <ul>
+            {% for error in form.trucker.errors %}
+              <li class="error">{{ error }}</li>
+            {% endfor %}
+        </ul>
+
+        {{ form.pallet_amount.label }}
+        {{ form.pallet_amount }}
+        <ul>
+            {% for error in form.pallet_amount.errors %}
+              <li class="error">{{ error }}</li>
+            {% endfor %}
+        </ul>
+
+        {{ form.pickup.label }}
+        {{ form.pickup }}
+        <ul>
+            {% for error in form.pickup.errors %}
+              <li class="error">{{ error }}</li>
+            {% endfor %}
+        </ul>
+
+        <input type="submit" value="Submit">
+    </fieldset>
+</form>
+
+{% endblock %}

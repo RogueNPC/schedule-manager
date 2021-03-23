@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>The Schedule</h1>
+
+<p><em>This holds every load entered into the schedule. Click on "New Load" to enter a new load into the schedule.</em></p>
+
+<h2>All Loads</h2>
+
+{% for load in all_loads %}
+<div class="load">
+    <a href="/load/{{ load.id }}">{{ load.load_number }}</a> - 
+    <p><strong>Date</strong>: {{ load.date_and_time }}</p>
+    <p><strong>Number of Pallets</strong>: {{ load.pallet_amount }}</p>
+</div>
+{% endfor %}
+
+{% endblock %}

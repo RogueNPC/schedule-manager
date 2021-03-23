@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>New Load</h1>
+
+<form method="POST" action="{{ url_for('main.new_load') }}">
+    {{ form.csrf_token }}
+    <fieldset>
+        <legend>Please enter the load information:</legend>
+
+        {{ form.load_number.label }}
+        {{ form.load_number }}
+        <ul>
+            {% for error in form.load_number.errors %}
+              <li class="error">{{ error }}</li>
+            {% endfor %}
+        </ul>
+
+        {{ form.date_and_time.label }}
+        {{ form.date_and_time }}
+        <ul>
+            {% for error in form.date_and_time.errors %}
+              <li class="error">{{ error }}</li>
+            {% endfor %}
+        </ul>
+
+        {{ form.shipping_order_number.label }}
+        {{ form.shipping_order_number }}
+        <ul>
+            {% for error in form.shipping_order_number.errors %}
+                <li class="error">{{ error }}</li>
+            {% endfor %}
+        </ul>
+
+        {{ form.customer.label }}
+        {{ form.customer }}
+        <ul>
+            {% for error in form.customer.errors %}
+              <li class="error">{{ error }}</li>
+            {% endfor %}
+        </ul>
+
+        {{ form.trucker.label }}
+        {{ form.trucker }}
+        <ul>
+            {% for error in form.trucker.errors %}
+              <li class="error">{{ error }}</li>
+            {% endfor %}
+        </ul>
+
+        {{ form.pallet_amount.label }}
+        {{ form.pallet_amount }}
+        <ul>
+            {% for error in form.pallet_amount.errors %}
+              <li class="error">{{ error }}</li>
+            {% endfor %}
+        </ul>
+
+        {{ form.pickup.label }}
+        {{ form.pickup }}
+        <ul>
+            {% for error in form.pickup.errors %}
+              <li class="error">{{ error }}</li>
+            {% endfor %}
+        </ul>
+
+        <input type="submit" value="Submit">
+    </fieldset>
+</form>
+
+{% endblock %}
