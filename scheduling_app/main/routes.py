@@ -16,11 +16,14 @@ main = Blueprint("main", __name__)
 
 @main.route('/')
 def homepage():
+    """Loads information about the site"""
     return render_template('home.html')
 
 @main.route('/schedule')
+# @login_required requires users to be logged in to use function
 @login_required
 def schedule():
+    """Shows the user all the shipping loads that a specific user entered"""
     all_loads = Load.query.all()
     return render_template('schedule.html', all_loads=all_loads)
 
